@@ -2,10 +2,25 @@ import java.util.*;
 
 class HotelBooking {
     static Scanner sc = new Scanner(System.in);
-    static String[] rooms = new String[5];
-    static String[] names = new String[5]; // created new string for 5 rooms and 5 names to be assigned
-    static String[] types = new String[5];
-    static Integer[] prices = new Integer[5];
+    static Room[] hotelrooms = new Room[5];
+
+
+
+    static class Room {
+        int roomnumber;
+        String status;
+        String Customername;
+        String type;
+        int price;
+        public Room(int roomnumber, String  status,String Customername, String type, int price){
+            this.roomnumber = roomnumber;
+            this.status=status;
+            this.Customername= Customername;
+            this.type =type;
+            this.price = price;
+        }
+    }
+
 
 
 
@@ -20,40 +35,23 @@ class HotelBooking {
     }
 
     private static void initialize() {   // initialized cause we only need this once so it should not run again
-        rooms[0] = "Available";
-        names[0]="";
-        types[0]="Delux";
-        prices[0] = 5000;
-        rooms[1] = "Available";
-        names[1]="";
-        types[1]="Standard";
-        prices[1]= 3000;
-        rooms[2] = "Available";
-        names[2]="";
-        types[2]= "Suite";
-        prices[2]= 10000;
-        rooms[3] = "Available";
-        names[3]="";
-        types[3]= "Standard";
-        prices[3]= 3000;
-        rooms[4] = "Available";
-        names[4]="";
-        types[4]= "Delux";
-        prices[4]=5000;
-
-
+    hotelrooms[0] =new Room(101, "Available", "empty name" , "Deluxe", 5000);
+    hotelrooms[1] =new Room(102, "Available", "empty name", "Standard", 3000);
+    hotelrooms[2] =new Room(103, "Available", "empty name", "Suite", 10000);
+    hotelrooms[3] =new Room(104, "Available", "empty name", "Standard", 3000);
+    hotelrooms[4] =new Room(105, "Available", "empty name", "Delux", 5000);
 
     }
 
     private static void viewRooms() {
         System.out.println("=======ROOM STATUS======");
 
-        for (int i = 0; i < rooms.length; i++) {
+        for (int i = 0; i < hotelrooms.length; i++) {
 
-            if (rooms[i].equals("Available")) {
-                System.out.println((101 + i) + " - Available");
+            if (hotelrooms[i].status.equals("Available")) {
+                System.out.println(hotelrooms[i].roomnumber + " - Available");
             } else {
-                System.out.println((101 + i) + " - Booked - " + names[i]);
+                System.out.println(hotelrooms[i].roomnumber + " - Booked - " + hotelrooms[i].Customername);
             }
 
         }
@@ -68,22 +66,22 @@ class HotelBooking {
         System.out.println("Enter room Number");
         int enteredroom = sc.nextInt();
         int index = enteredroom - 101;
-        if (index >= rooms.length || index < 0) {
+        if (index >= hotelrooms.length || index < 0) {
             System.out.println("Invalid Room Number");
             return;
-        } else if (rooms[index].equals("Booked")) {
+        } else if (hotelrooms[index].status.equals("Booked")) {
             System.out.println("Room not Available");
 
         } else {
             System.out.println("Room Booked for  "  + customername);
-            rooms[index]="Booked";
-            names[index] = customername; // Showing customer names parallel to the room index
+            hotelrooms[index].status="Booked";
+            hotelrooms[index].Customername = customername; // Showing customer names parallel to the room index
 
             System.out.println("========BOOKING RECEIPT========");
             System.out.println("Customer Name : " + customername);
-            System.out.println("Room number : " + (index+101) );
-            System.out.println("Room Type : " + types[index]);
-            System.out.println("Price : " + prices[index]);
+            System.out.println("Room number : " + hotelrooms[index].roomnumber );
+            System.out.println("Room Type : " + hotelrooms[index].type);
+            System.out.println("Price : " + hotelrooms[index].price);
             System.out.println("Status : Confirmed");
 
 
@@ -96,27 +94,28 @@ class HotelBooking {
         System.out.println("Enter room Number");
         int enteredroom = sc.nextInt();
         int index = enteredroom - 101;
-        if (index >= rooms.length || index < 0) {
+        if (index >= hotelrooms.length || index < 0) {
             System.out.println("Invalid Room Number");
             return;
-        } else if (rooms[index].equals("Available")) {
+        } else if (hotelrooms[index].status.equals("Available")) {
             System.out.println("Room is already available");
         } else {
             System.out.println("Room Cancelled Successfully");
-            rooms[index] = "Available";
+            hotelrooms[index].status = "Available";
+            hotelrooms[index].Customername="";
         }
     }
     private static void searchBooking(){
-        System.out.println("======SEARCH BOOKING========z");
+        System.out.println("======SEARCH BOOKING========");
         boolean found = false;
         System.out.println("Enter Name :");
         String searchname = sc.next();
-        for(int i =0;i< names.length;i++){
-            if(searchname.equals(names[i])){
-                System.out.println("Room Number :" + (101+i));
-                System.out.println("Room Type : " + types[i]);
-                System.out.println("Price : " + prices[i]);;
-                System.out.println("Status : " + rooms[i]);
+        for(int i = 0; i< hotelrooms.length; i++){
+            if(searchname.equals(hotelrooms[i].Customername)){
+                System.out.println("Room Number :" + hotelrooms[i].roomnumber);
+                System.out.println("Room Type : " + hotelrooms[i].type);
+                System.out.println("Price : " + hotelrooms[i].price);;
+                System.out.println("Status : " + hotelrooms[i].status);
                 found = true;
                 break;
             }
@@ -163,4 +162,3 @@ class HotelBooking {
         }
     }
 }
-
