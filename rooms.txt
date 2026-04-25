@@ -1,0 +1,5 @@
+101,Available,,Deluxe,5000
+102,Available,,Standard,3000
+103,Available,,Suite,10000
+104,Available,empty name,Standard,3000
+105,Available,empty name,Delux,5000
