@@ -39,11 +39,11 @@ class HotelBooking {
     }
 
     private static void initialize() {   // initialized cause we only need this once so it should not run again
-    hotelrooms[0] =new Room(101, "Available", "empty name" , "Deluxe", 5000);
-    hotelrooms[1] =new Room(102, "Available", "empty name", "Standard", 3000);
-    hotelrooms[2] =new Room(103, "Available", "empty name", "Suite", 10000);
-    hotelrooms[3] =new Room(104, "Available", "empty name", "Standard", 3000);
-    hotelrooms[4] =new Room(105, "Available", "empty name", "Delux", 5000);
+    hotelrooms[0] =new Room(101, "Available", "" , "Deluxe", 5000);
+    hotelrooms[1] =new Room(102, "Available", "", "Standard", 3000);
+    hotelrooms[2] =new Room(103, "Available", "", "Suite", 10000);
+    hotelrooms[3] =new Room(104, "Available", "", "Standard", 3000);
+    hotelrooms[4] =new Room(105, "Available", "", "Delux", 5000);
 
     }
 
