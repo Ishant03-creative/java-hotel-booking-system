@@ -24,6 +24,26 @@ class HotelBooking {
     }
 
 
+    private static void login() {
+        String username = "admin";
+        String password = "1234";
+        while (true) {
+            System.out.println("===== ADMIN LOGIN =====");
+
+            System.out.println("Enter Username : ");
+            String enteredUsername = sc.next();
+
+            System.out.println("Enter Password : ");
+            String enteredPassword = sc.next();
+
+            if (enteredUsername.equalsIgnoreCase(username) && enteredPassword.equals(password)) {
+                System.out.println("Login Successful");
+                break;
+            } else {
+                System.out.println("Invalid Credentials");
+            }
+        }
+    }
 
 
     static void showmenu() {
